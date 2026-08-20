@@ -10,7 +10,7 @@ export default async function Home() {
     <main>
       <section className="hero" aria-labelledby="page-title"><div className="page-shell">
         <header className="site-header"><Image src="/ford-logo.svg" alt="Ford" width={150} height={60} priority className="ford-logo" /><span className="header-label">Research prototype / 01</span></header>
-        <div className="hero-copy"><p className="eyebrow"><span /> Driver wellbeing, in real time</p><h1 id="page-title">Driver<br />Signals</h1>
+        <div className="hero-copy"><p className="eyebrow"><span /> Driver wellbeing, in real time</p><h1 id="page-title">Vital<br />Signs</h1>
           <div className="hero-intro"><p>A private, browser-based view of changes in eye activity and vocal energy that may accompany stress behind the wheel.</p><p className="privacy-note">No recordings. No uploads.<br />Processing stays on this device.</p></div>
         </div>
       </div></section>
