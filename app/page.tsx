@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { connection } from "next/server";
 import BlinkTracker from "@/components/BlinkTracker";
 import VoiceArousalMonitor from "@/components/VoiceArousalMonitor";
 
-export default function Home() {
+export default async function Home() {
+  await connection();
+
   return (
     <main>
       <section className="hero" aria-labelledby="page-title"><div className="page-shell">
