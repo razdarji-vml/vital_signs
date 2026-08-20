@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Biosignal Monitor",
-  description: "Experimental in-browser blink-rate and vocal-arousal tracker",
+  title: "Driver Signals | Ford",
+  description: "A private, in-browser view of signals that may accompany driver stress.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

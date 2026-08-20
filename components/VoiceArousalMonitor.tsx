@@ -132,83 +132,72 @@ export default function VoiceArousalMonitor() {
 
   const labelColor =
     arousalScore < 30
-      ? "text-emerald-400"
+      ? "reading-good"
       : arousalScore < 60
-        ? "text-amber-400"
-        : "text-red-400";
+        ? "reading-warn"
+        : "reading-alert";
 
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Voice Arousal Monitor</h2>
+    <article className="monitor-card">
+      <div className="monitor-topline">
+        <h3 className="monitor-title">Driver Voice Monitor</h3>
         <button
           onClick={active ? stop : start}
-          className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${
-            active
-              ? "bg-red-500/20 text-red-300 hover:bg-red-500/30"
-              : "bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30"
-          }`}
+          className={`sensor-button ${active ? "stop" : ""}`}
         >
           {active ? "Stop" : "Start listening"}
         </button>
       </div>
 
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="sensor-error">{error}</p>}
 
       {active && (
         <>
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="metrics">
             <div>
-              <p className="text-white/50">Pitch</p>
-              <p className="text-xl font-mono">
+              <p className="metric-label">Pitch</p>
+              <p className="metric-value">
                 {currentPitch ? `${currentPitch} Hz` : "—"}
               </p>
             </div>
             <div>
-              <p className="text-white/50">Pitch variability</p>
-              <p className="text-xl font-mono">{pitchVariability.toFixed(1)}</p>
+              <p className="metric-label">Pitch variability</p>
+              <p className="metric-value">{pitchVariability.toFixed(1)}</p>
             </div>
           </div>
 
-          <div>
-            <p className="mb-1 text-xs text-white/50">Mic energy</p>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+          <div className="metric-bars single">
+            <div><p className="bar-label">Mic energy</p>
+            <div className="bar-track">
               <div
-                className="h-full bg-sky-400 transition-all duration-75"
+                className="bar-fill"
                 style={{ width: `${Math.min(currentEnergy * 400, 100)}%` }}
               />
-            </div>
+            </div></div>
           </div>
 
-          <div>
-            <div className="mb-1 flex items-baseline justify-between">
-              <p className="text-xs text-white/50">Vocal arousal index</p>
-              <span className={`text-sm font-semibold ${labelColor}`}>
+          <div className="metric-bars single">
+            <div><div className="monitor-topline">
+              <p className="bar-label">Vocal arousal index</p>
+              <span className={`metric-label ${labelColor}`}>
                 {label} ({arousalScore})
               </span>
             </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+            <div className="bar-track">
               <div
-                className={`h-full transition-all duration-150 ${
-                  arousalScore < 30
-                    ? "bg-emerald-400"
-                    : arousalScore < 60
-                      ? "bg-amber-400"
-                      : "bg-red-400"
-                }`}
-                style={{ width: `${arousalScore}%` }}
+                className={`bar-fill ${arousalScore < 30 ? "reading-good" : arousalScore < 60 ? "reading-warn" : "reading-alert"}`}
+                style={{ width: `${arousalScore}%`, backgroundColor: "currentColor" }}
               />
-            </div>
+            </div></div>
           </div>
         </>
       )}
 
-      <p className="text-xs leading-relaxed text-white/40">
-        Heuristic only, derived from pitch and loudness variability over a
-        rolling {WINDOW_MS / 1000}s window. Not a validated stress or lie
-        detector — treat as a rough proxy for vocal energy/variability, not a
-        diagnosis.
+      <p className="monitor-description">
+        Looks for changes in pitch and vocal energy over a rolling {WINDOW_MS / 1000}s
+        window. Noise, conversation and microphone position can affect the
+        reading. This is a stress-awareness cue, not a stress detector.
       </p>
-    </div>
+    </article>
   );
 }

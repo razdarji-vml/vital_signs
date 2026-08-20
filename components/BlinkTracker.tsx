@@ -130,69 +130,63 @@ export default function BlinkTracker() {
     blinkRate < 15 ? "Normal" : blinkRate < 30 ? "Elevated" : "High";
   const rateColor =
     blinkRate < 15
-      ? "text-emerald-400"
+      ? "reading-good"
       : blinkRate < 30
-        ? "text-amber-400"
-        : "text-red-400";
+        ? "reading-warn"
+        : "reading-alert";
 
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Eye / Blink Tracker</h2>
+    <article className="monitor-card">
+      <div className="monitor-topline">
+        <h3 className="monitor-title">Driver Eye Monitor</h3>
         <button
           onClick={active ? stop : start}
           disabled={loading}
-          className={`rounded-md px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${
-            active
-              ? "bg-red-500/20 text-red-300 hover:bg-red-500/30"
-              : "bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30"
-          }`}
+          className={`sensor-button ${active ? "stop" : ""}`}
         >
           {loading ? "Loading model…" : active ? "Stop" : "Start camera"}
         </button>
       </div>
 
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="sensor-error">{error}</p>}
 
       <video
         ref={videoRef}
         muted
         playsInline
-        className={`w-full scale-x-[-1] rounded-lg bg-black/40 ${
-          active ? "block" : "hidden"
-        }`}
+        className={`sensor-video scale-x-[-1] ${active ? "" : "hidden"}`}
       />
 
       {active && (
         <>
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="metrics">
             <div>
-              <p className="text-white/50">Blinks (total)</p>
-              <p className="text-xl font-mono">{blinkCount}</p>
+              <p className="metric-label">Blinks (total)</p>
+              <p className="metric-value">{blinkCount}</p>
             </div>
             <div>
-              <p className="text-white/50">Blink rate</p>
-              <p className={`text-xl font-mono ${rateColor}`}>
+              <p className="metric-label">Blink rate</p>
+              <p className={`metric-value ${rateColor}`}>
                 {blinkRate}/min · {rateLabel}
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="metric-bars">
             <div>
-              <p className="mb-1 text-xs text-white/50">Left eye openness</p>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <p className="bar-label">Left eye openness</p>
+              <div className="bar-track">
                 <div
-                  className="h-full bg-sky-400 transition-all duration-75"
+                  className="bar-fill"
                   style={{ width: `${openness.left * 100}%` }}
                 />
               </div>
             </div>
             <div>
-              <p className="mb-1 text-xs text-white/50">Right eye openness</p>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <p className="bar-label">Right eye openness</p>
+              <div className="bar-track">
                 <div
-                  className="h-full bg-sky-400 transition-all duration-75"
+                  className="bar-fill"
                   style={{ width: `${openness.right * 100}%` }}
                 />
               </div>
@@ -201,12 +195,11 @@ export default function BlinkTracker() {
         </>
       )}
 
-      <p className="text-xs leading-relaxed text-white/40">
-        Runs fully in-browser via MediaPipe Face Landmarker — no video leaves
-        your device. Normal blink rate is roughly 15–20/min at rest; elevated
-        rates can correlate with stress, fatigue, or dry eyes, but this is a
-        rough indicator, not a diagnosis.
+      <p className="monitor-description">
+        Tracks changes in blink activity that may accompany stress or fatigue.
+        Lighting, dry eyes, eyewear and road conditions can all affect the
+        reading. Video is processed on this device and is never uploaded.
       </p>
-    </div>
+    </article>
   );
 }
