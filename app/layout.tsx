@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Driver Signals | Ford",
+  title: "Vital Signs | Ford",
   description: "A private, in-browser view of signals that may accompany driver stress.",
 };
 

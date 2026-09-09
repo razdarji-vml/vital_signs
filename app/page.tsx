@@ -20,7 +20,7 @@ export default async function Home() {
           <aside className="disclaimer"><span className="disclaimer-mark" aria-hidden="true">!</span><p><strong>For awareness only — not a safety or diagnostic system.</strong> This is an app to simulate the monitoring of driver vital signs.</p></aside>
         </div>
       </div></section>
-      <footer><div className="page-shell footer-inner"><span>Driver Signals</span><span>Driver wellbeing prototype · 2026</span></div></footer>
+      <footer><div className="page-shell footer-inner"><span>Vital Signs</span><span>Driver wellbeing prototype · 2026</span></div></footer>
     </main>
   );
 }
