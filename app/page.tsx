@@ -17,7 +17,7 @@ export default async function Home() {
       <section className="monitor-section" aria-label="Live signal monitors"><div className="page-shell">
         <div className="section-heading"><div><p className="section-index">01 / DRIVER STATE</p><h2>Read the<br />road within.</h2></div><p>Start either sensor before driving to explore how your signals respond. Never interact with this interface while the vehicle is moving.</p></div>
         <div className="instrument-panel"><div className="monitor-grid"><BlinkTracker /><VoiceArousalMonitor /></div>
-          <aside className="disclaimer"><span className="disclaimer-mark" aria-hidden="true">!</span><p><strong>For awareness only — not a safety or diagnostic system.</strong> These signals cannot determine whether you are stressed, fatigued or fit to drive. If you feel impaired or overwhelmed, pull over somewhere safe and take a break.</p></aside>
+          <aside className="disclaimer"><span className="disclaimer-mark" aria-hidden="true">!</span><p><strong>For awareness only — not a safety or diagnostic system.</strong> This is an app to simulate the monitoring of driver vital signs.</p></aside>
         </div>
       </div></section>
       <footer><div className="page-shell footer-inner"><span>Driver Signals</span><span>Driver wellbeing prototype · 2026</span></div></footer>
