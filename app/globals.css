@@ -62,6 +62,12 @@ footer { background:var(--ford-blue); color:#fff; }
 /* ---- Drive test: card entry point ---------------------------------------- */
 .monitor-lede { margin:26px 0 0; color:var(--ford-blue); font-size:17px; line-height:1.45; letter-spacing:-.01em; }
 .card-secondary { width:100%; min-width:0; }
+.monitor-status { display:flex; align-items:center; gap:10px; flex:none; margin:0; color:#8a8984; font-size:11px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+.monitor-status span { width:22px; height:2px; background:#bab9b3; }
+.monitor-card.is-exploring { background:rgba(255,255,255,.46); border-color:var(--line); box-shadow:none; }
+.monitor-card.is-exploring::before { background:#bab9b3; }
+.monitor-card.is-exploring .monitor-title { color:#75746f; }
+.monitor-card.is-exploring .monitor-lede { color:#75746f; }
 .reading-normal { color:var(--ford-bright); } .reading-elevated { color:var(--warning); } .reading-high { color:var(--alert); }
 
 /* ---- Drive test: overlay shell ------------------------------------------- */

@@ -64,9 +64,9 @@ export default function BlinkTracker() {
       )}
 
       <p className="monitor-description">
-        Tracks changes in blink activity that may accompany stress or fatigue.
-        Lighting, dry eyes, eyewear and road conditions can all affect the
-        reading. Video is processed on this device and is never uploaded.
+        Tracks changes in blink activity that may accompany stress. Lighting, dry
+        eyes, eyewear and road conditions can all affect the reading. Video is
+        processed on this device and is never uploaded.
       </p>
 
       {open && (

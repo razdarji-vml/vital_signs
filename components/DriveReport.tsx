@@ -38,7 +38,7 @@ function LevelIcon({ level }: { level: ZoneId }) {
 const HEADLINE: Record<ZoneId, string> = {
   normal: "Steady eyes.",
   elevated: "Signals worth a break.",
-  high: "Strong fatigue signals.",
+  high: "Strong stress signals.",
 };
 
 type Stat = { label: string; value: string; note?: string };
@@ -145,7 +145,7 @@ export default function DriveReport({
         <p>
           <strong>For awareness only — not a safety or diagnostic system.</strong>{" "}
           Blink rate shifts with lighting, screens, dry eyes and eyewear as much as
-          with fatigue. This is a simulation of driver vital-sign monitoring.
+          with stress. This is a simulation of driver vital-sign monitoring.
         </p>
       </aside>
 

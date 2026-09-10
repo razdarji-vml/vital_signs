@@ -346,7 +346,7 @@ export default function DriveTest({
                 </li>
                 <li>
                   <strong>Sit still and watch the road.</strong> Looking away or
-                  talking changes your blink rate more than fatigue does.
+                  talking changes your blink rate more than stress does.
                 </li>
               </ul>
             </section>

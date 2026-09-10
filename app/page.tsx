@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { connection } from "next/server";
 import BlinkTracker from "@/components/BlinkTracker";
-import VoiceArousalMonitor from "@/components/VoiceArousalMonitor";
+import VoiceMonitorPlaceholder from "@/components/VoiceMonitorPlaceholder";
 
 export default async function Home() {
   await connection();
@@ -16,7 +16,7 @@ export default async function Home() {
       </div></section>
       <section className="monitor-section" aria-label="Live signal monitors"><div className="page-shell">
         <div className="section-heading"><div><p className="section-index">01 / DRIVER STATE</p><h2>Read the<br />road within.</h2></div><p>Start either sensor before driving to explore how your signals respond. Never interact with this interface while the vehicle is moving.</p></div>
-        <div className="instrument-panel"><div className="monitor-grid"><BlinkTracker /><VoiceArousalMonitor /></div>
+        <div className="instrument-panel"><div className="monitor-grid"><BlinkTracker /><VoiceMonitorPlaceholder /></div>
           <aside className="disclaimer"><span className="disclaimer-mark" aria-hidden="true">!</span><p><strong>For awareness only — not a safety or diagnostic system.</strong> This is an app to simulate the monitoring of driver vital signs.</p></aside>
         </div>
       </div></section>

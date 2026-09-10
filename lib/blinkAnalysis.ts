@@ -159,7 +159,7 @@ export function summariseDrive(input: {
     const next = ZONES[Math.min(rank(level) + 1, ZONES.length - 1)].id;
     escalate(
       next,
-      `${longClosures.length} eye closures lasted longer than ${LONG_CLOSURE_MS}ms, which can accompany drowsiness.`
+      `${longClosures.length} eye closures lasted longer than ${LONG_CLOSURE_MS}ms, well beyond an ordinary blink.`
     );
   }
 
